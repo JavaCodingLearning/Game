@@ -3,7 +3,7 @@ import java.awt.Canvas;
 import java.awt.Dimension;
 import javax.swing.JFrame;
 
-/** @author molly_mcconaghy **/
+/** @author coding_java **/
 public class Window extends Canvas {
     public Window(int w, int h, String name, Game game){
         JFrame window = new JFrame(name);

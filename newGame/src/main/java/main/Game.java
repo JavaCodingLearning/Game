@@ -4,7 +4,7 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
 
- /** @author molly_mcconaghy **/
+ /** @author coding_java **/
 
 public class Game extends Canvas implements Runnable{
 
