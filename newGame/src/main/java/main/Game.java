@@ -4,7 +4,7 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
 
- /** @author coding_java **/
+ /** @author molly_mcconaghy **/
 
 public class Game extends Canvas implements Runnable{
 
@@ -17,8 +17,16 @@ public class Game extends Canvas implements Runnable{
     private Thread thread;
     private boolean running = false;
     
+    //create an instance of our handler 
+    private Handler handler;
+    
     public Game(){
         Window window = new Window(W, H, "new game", this);
+        handler = new Handler();
+        //new player specs
+        handler.addObject(new Player(100, 400, ID.Player)); //sets the coords 
+        handler.addObject(new Player(200, 400, ID.Player));
+        handler.addObject(new Player(400, 400, ID.Player));
    }
         
     public synchronized void start(){
@@ -54,7 +62,7 @@ public class Game extends Canvas implements Runnable{
        delta += (now - lastTime) / nanoseconds;  // add the amount of change since the last loop
        lastTime = now; // set lastTime to now to prepare for next loop
        while(delta >= 1) {
-        update();
+        tick();
         delta--;
        }
        if(running){
@@ -72,7 +80,8 @@ public class Game extends Canvas implements Runnable{
     
     }  
 
-    private void update() {
+    private void tick() {
+        handler.tick();
     }
 
     private void render() {
@@ -84,8 +93,10 @@ public class Game extends Canvas implements Runnable{
         
         Graphics g = b.getDrawGraphics();
         
-        g.setColor(Color.black);
+        g.setColor(Color.white);
         g.fillRect(0, 0, W, H);
+        
+        handler.render(g);
         
         g.dispose();
         b.show();
