@@ -21,6 +21,10 @@ public class Player extends GameObject{
     public void tick() {
         x += velocityX;
         y += velocityY;
+          if(x < 0) x = 0;
+          if(x > Game.W - 39) x = Game.W - 39;
+          if(y < 0) y = 0;
+          if(y > Game.H - 60) y = Game.H - 60;
     }
 
     public void render(Graphics g) {
@@ -29,4 +33,8 @@ public class Player extends GameObject{
         //else if(id == ID.Player2) g.setColor(Color.red);
         //g.fillRect(x, y, 32, 32);
     }
+    
 }
+
+
+

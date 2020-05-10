@@ -41,7 +41,7 @@ public class Game extends Canvas implements Runnable{
         for (int i = 0; i < 3; i++)
         handler.addObject(new Enemy(r.nextInt(W), r.nextInt(H), ID.Enemy, ss)); //sets the coords 
         //handler.addObject(new Player(100, 200, ID.Player2)); //sets the coords 
-        for (int i = 0; i < 3; i++)
+        for (int i = 0; i < 2; i++)
         handler.addObject(new Enemy2(r.nextInt(W), r.nextInt(H), ID.Enemy2, ss)); //sets the coords 
         //handler.addObject(new Player(100, 200, ID.Player2)); //sets the coords         
        
@@ -119,6 +119,8 @@ public class Game extends Canvas implements Runnable{
         g.dispose();
         b.show();
     }
+    
+
     
 }
 

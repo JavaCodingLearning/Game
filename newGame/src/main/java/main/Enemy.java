@@ -33,3 +33,6 @@ public class Enemy extends GameObject{
        g.drawImage(enemy_image, x, y, null);
     }
 }
+
+
+
