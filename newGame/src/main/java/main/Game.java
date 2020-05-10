@@ -3,6 +3,7 @@ import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
+import java.awt.image.BufferedImage;
 import java.util.Random;
 
  /** @author coding_java **/
@@ -17,23 +18,31 @@ public class Game extends Canvas implements Runnable{
     public static final int W = 650, H = W / 13 * 10;
     private Thread thread;
     private boolean running = false;
+    private SpriteSheet ss;
     
     private Random r;
     
     //create an instance of our handler 
     private Handler handler;
     
+    private BufferedImage sprite_sheet = null;
+    
     public Game(){
         //need to initialize the handler first 
         handler = new Handler();
         this.addKeyListener(new Action(handler));
+        
+        BufferedImageLoader loader = new BufferedImageLoader();
+        sprite_sheet = loader.loadImage("/spritesheet.png"); //"/image083-00.png"
+        
+        ss = new SpriteSheet(sprite_sheet);
         Window window = new Window(W, H, "new game", this);
         //if you get a null pointer exception need to initalize
         r = new Random();
         //new player specs
         
             //} //put 50 objects in the game
-        handler.addObject(new Player(100, 400, ID.Player)); //sets the coords 
+        handler.addObject(new Player(100, 400, ID.Player, ss)); //sets the coords 
         //handler.addObject(new Player(100, 200, ID.Player2)); //sets the coords 
        
    }

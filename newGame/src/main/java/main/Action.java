@@ -10,7 +10,7 @@ import java.awt.event.KeyEvent;
 
 /**
  *
- * @author mollymcconaghy
+ * @author coding_java
  */
 public class Action extends KeyAdapter{
     private Handler handler;

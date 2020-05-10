@@ -10,11 +10,13 @@ public abstract class GameObject {
     protected int x, y;
     protected ID id;
     protected int velocityX, velocityY; //speed in x and y direction 
-    //contructor for game object:
-    public GameObject(int x, int y, ID id){
+    protected SpriteSheet ss;
+//contructor for game object:
+    public GameObject(int x, int y, ID id, SpriteSheet ss){
         this.x = x;
         this.y = y;
         this.id = id;
+        this.ss = ss;
     }
     //abstract class will need to be in player and enemy class.
     public abstract void tick();
