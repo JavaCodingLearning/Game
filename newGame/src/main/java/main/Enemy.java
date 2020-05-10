@@ -10,7 +10,7 @@ import java.awt.image.BufferedImage;
  */
 public class Enemy extends GameObject{
     
-    private BufferedImage enemy_image;
+    private final BufferedImage enemy_image;
     public Enemy(int x, int y, ID id, SpriteSheet ss){
         super(x, y, id, ss);
         enemy_image = ss.grabImage(5, 5, 32, 32);

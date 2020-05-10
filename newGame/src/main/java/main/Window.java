@@ -17,10 +17,7 @@ public class Window extends Canvas {
         window.add(game);
         window.setVisible(true);
         
-        game.start();
-        
-        
-        
+        game.start();     
         
     }
     

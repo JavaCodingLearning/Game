@@ -4,20 +4,15 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 
-/**
- *
- * @author coding_java
- */
+/** @author coding_java **/
 public class Enemy2 extends GameObject{
     
-    private BufferedImage enemy_image;
+    private final BufferedImage enemy_image;
     public Enemy2(int x, int y, ID id, SpriteSheet ss){
         super(x, y, id, ss);
         enemy_image = ss.grabImage(6, 6, 32, 32);
-        
         velocityY = 5;
         velocityX = 5;
-        
     }
     
     public void tick(){
@@ -33,3 +28,9 @@ public class Enemy2 extends GameObject{
        g.drawImage(enemy_image, x, y, null);
     }
 }
+
+
+
+
+
+

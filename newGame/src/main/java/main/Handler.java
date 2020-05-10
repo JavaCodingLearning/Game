@@ -3,10 +3,7 @@ package main;
 import java.awt.Graphics;
 import java.util.LinkedList;
 
-/**
- *
- * @author coding_java
- */
+/** @author coding_java **/
 public class Handler {
     
     LinkedList<GameObject> object = new LinkedList<>();
@@ -32,11 +29,6 @@ public class Handler {
     
     public void removeObject(GameObject object){
         this.object.remove(object);
-    }
-    
-    
-    
-    
-   
+    }  
     
 }
