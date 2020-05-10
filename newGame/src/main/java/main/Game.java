@@ -42,8 +42,15 @@ public class Game extends Canvas implements Runnable{
         //new player specs
         
             //} //put 50 objects in the game
+            
+        
         handler.addObject(new Player(100, 400, ID.Player, ss)); //sets the coords 
+        for (int i = 0; i < 3; i++)
+        handler.addObject(new Enemy(r.nextInt(W), r.nextInt(H), ID.Enemy, ss)); //sets the coords 
         //handler.addObject(new Player(100, 200, ID.Player2)); //sets the coords 
+        for (int i = 0; i < 3; i++)
+        handler.addObject(new Enemy2(r.nextInt(W), r.nextInt(H), ID.Enemy2, ss)); //sets the coords 
+        //handler.addObject(new Player(100, 200, ID.Player2)); //sets the coords         
        
    }
         
@@ -111,7 +118,7 @@ public class Game extends Canvas implements Runnable{
         
         Graphics g = b.getDrawGraphics();
         
-        g.setColor(Color.white);
+        g.setColor(Color.lightGray);
         g.fillRect(0, 0, W, H);
         
         handler.render(g);

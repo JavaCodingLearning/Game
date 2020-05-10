@@ -60,13 +60,3 @@ public class Action extends KeyAdapter{
 }
 
 
-
-/* Action class for input from user. 
-Then add methdods as a part of keyAdapter.
-key will display a number value corresponding to number pressed.
-
-In order to just have one player move, 
-we need to loop through all the objects in our game 
-and say which one has the ID of the object we want to move. 
-
-*/
