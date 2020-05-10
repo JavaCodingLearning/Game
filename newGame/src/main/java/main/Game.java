@@ -11,20 +11,16 @@ import java.util.Random;
 public class Game extends Canvas implements Runnable{
 
     public static void main(String[] args) {
-        new Game();
+        Game game = new Game();
         
     }
-    
     public static final int W = 650, H = W / 13 * 10;
     private Thread thread;
     private boolean running = false;
-    private SpriteSheet ss;
-    
-    private Random r;
-    
+    private final SpriteSheet ss;
+    private final Random r;
     //create an instance of our handler 
-    private Handler handler;
-    
+    private final Handler handler;
     private BufferedImage sprite_sheet = null;
     
     public Game(){
@@ -33,17 +29,14 @@ public class Game extends Canvas implements Runnable{
         this.addKeyListener(new Action(handler));
         
         BufferedImageLoader loader = new BufferedImageLoader();
-        sprite_sheet = loader.loadImage("/spritesheet.png"); //"/image083-00.png"
+        sprite_sheet = loader.loadImage("/spritesheet.png"); 
         
         ss = new SpriteSheet(sprite_sheet);
         Window window = new Window(W, H, "new game", this);
-        //if you get a null pointer exception need to initalize
         r = new Random();
         //new player specs
         
-            //} //put 50 objects in the game
-            
-        
+        //put as many objects in game as you like 
         handler.addObject(new Player(100, 400, ID.Player, ss)); //sets the coords 
         for (int i = 0; i < 3; i++)
         handler.addObject(new Enemy(r.nextInt(W), r.nextInt(H), ID.Enemy, ss)); //sets the coords 
@@ -65,26 +58,26 @@ public class Game extends Canvas implements Runnable{
         try{
             thread.join();
             running = false;
-        }catch(Exception e){
-            e.printStackTrace();
+        }catch(InterruptedException e){
         }
         
     }
     
-    
-   
     public void run(){
         
       this.requestFocus();
       long lastTime = System.nanoTime(); // get current time to the nanosecond
       double amountOfTicks = 60.0; // set the number of ticks 
-      double nanoseconds = 1000000000 / amountOfTicks; //divide 60 into 1e9 of nano seconds or about 1 second
+      //divide 60 into 1e9 of nano seconds or about 1 second
+      double nanoseconds = 1000000000 / amountOfTicks; 
       double delta = 0;
       long timer = System.currentTimeMillis(); // get current time
       int frames = 0; // set frame variable
       while(running) {
-       long now = System.nanoTime(); // get current time in nonoseconds durring current loop
-       delta += (now - lastTime) / nanoseconds;  // add the amount of change since the last loop
+      // get current time in nonoseconds durring current loop
+       long now = System.nanoTime(); 
+       delta += (now - lastTime) / nanoseconds; //add the amount of change 
+       //since the last loop
        lastTime = now; // set lastTime to now to prepare for next loop
        while(delta >= 1) {
         tick();
@@ -94,7 +87,7 @@ public class Game extends Canvas implements Runnable{
             render();  // render visuals of the game
        frames++; //frame has passed
        }
-       if(System.currentTimeMillis() - timer > 1000) {  // if one second has passed
+       if(System.currentTimeMillis() - timer > 1000) { //if one second has passed
         timer += 1000;  // add a thousand to our timer for next time
         frames = 0;  // reset frame count for the next second
   
@@ -126,9 +119,6 @@ public class Game extends Canvas implements Runnable{
         g.dispose();
         b.show();
     }
-    
-   
-    
     
 }
 
