@@ -40,7 +40,7 @@ public class Player extends GameObject{
         for(int i =0; i < handler.object.size(); i++){
             GameObject tempObject = handler.object.get(i);
             
-            if(tempObject.getId() == ID.Enemy){
+            if(tempObject.getId() == ID.Enemy || tempObject.getId() == ID.Enemy2){
                 if(getBounds().intersects(tempObject.getBounds())){
                     Health.health -= 2;
                 }
