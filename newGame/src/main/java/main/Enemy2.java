@@ -2,6 +2,8 @@ package main;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 
 /** @author coding_java **/
@@ -15,6 +17,10 @@ public class Enemy2 extends GameObject{
         velocityX = 5;
     }
     
+        public Rectangle getBounds(){
+        return new Rectangle(x, y, 32, 32);
+    }
+    
     public void tick(){
         x += velocityX;
         y += velocityY;
@@ -25,6 +31,7 @@ public class Enemy2 extends GameObject{
            
     }
     public void render(Graphics g){
+
        g.drawImage(enemy_image, x, y, null);
     }
 }

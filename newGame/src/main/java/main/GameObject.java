@@ -1,5 +1,6 @@
 package main;
-import java.awt.Graphics; /** @author coding_java */
+import java.awt.Graphics;import java.awt.Rectangle;
+ /** @author coding_java */
 public abstract class GameObject {
     protected int x, y;
     protected ID id;
@@ -14,6 +15,8 @@ public abstract class GameObject {
     }  //abstract class will need to be in player and enemy class.
     public abstract void tick();
     public abstract void render(Graphics g);
+    //new intersect method 
+    public abstract Rectangle getBounds();
     public void setX(int x){     //setter and getter methods
         this.x = x;
     }

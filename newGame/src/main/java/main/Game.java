@@ -19,6 +19,7 @@ public class Game extends Canvas implements Runnable{
     private boolean running = false;
     private final SpriteSheet ss;
     private final Random r;
+    private Health health;
     //create an instance of our handler 
     private final Handler handler;
     private BufferedImage sprite_sheet = null;
@@ -33,11 +34,12 @@ public class Game extends Canvas implements Runnable{
         
         ss = new SpriteSheet(sprite_sheet);
         Window window = new Window(W, H, "new game", this);
+        health = new Health();
         r = new Random();
         //new player specs
         
         //put as many objects in game as you like 
-        handler.addObject(new Player(100, 400, ID.Player, ss)); //sets the coords 
+        handler.addObject(new Player(100, 400, ID.Player, ss, handler)); //sets the coords 
         for (int i = 0; i < 3; i++)
         handler.addObject(new Enemy(r.nextInt(W), r.nextInt(H), ID.Enemy, ss)); //sets the coords 
         //handler.addObject(new Player(100, 200, ID.Player2)); //sets the coords 
@@ -64,7 +66,7 @@ public class Game extends Canvas implements Runnable{
     }
     
     public void run(){
-        
+      
       this.requestFocus();
       long lastTime = System.nanoTime(); // get current time to the nanosecond
       double amountOfTicks = 60.0; // set the number of ticks 
@@ -100,8 +102,9 @@ public class Game extends Canvas implements Runnable{
 
     private void tick() {
         handler.tick();
+        health.tick();
     }
-
+   
     private void render() {
         BufferStrategy b = this.getBufferStrategy();
         if (b == null){
@@ -115,11 +118,20 @@ public class Game extends Canvas implements Runnable{
         g.fillRect(0, 0, W, H);
         
         handler.render(g);
+        health.render(g);
         
         g.dispose();
         b.show();
     }
     
+    public static int clamp(int var, int min, int max){
+        if(var >= max)
+            return var = max;
+        else if(var <= min)
+            return var = min;
+        else 
+            return var;
+    }
 
     
 }

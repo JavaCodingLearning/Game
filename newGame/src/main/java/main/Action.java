@@ -20,6 +20,7 @@ public class Action extends KeyAdapter{
                 if(key == KeyEvent.VK_LEFT) tempObject.setvelocityX(-5);
             }
       }
+        if(key == KeyEvent.VK_ESCAPE)System.exit(1);
     }
     public void keyReleased(KeyEvent e){
         int key = e.getKeyCode();
